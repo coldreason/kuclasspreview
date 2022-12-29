@@ -1,0 +1,23 @@
+{
+  "courses": [
+    {
+      "classNo": "01",
+      "code": "KECE",
+      "courseId": "203",
+      "link": "https://infodepot.korea.ac.kr/lecture1/lecsubjectPlanView.jsp?year=2023&term=1R&grad_cd=0136&col_cd=9999&dept_cd=5597&cour_cd=KECE203&cour_cls=01&cour_nm=&std_id=&device=WW",
+      "location": "대충 장소",
+      "proffessor": "교수님",
+      "title": "강의"
+    },
+    {
+      "classNo": "01",
+      "code": "KECE",
+      "courseId": "203",
+      "link": "https://infodepot.korea.ac.kr/lecture1/lecsubjectPlanView.jsp?year=2023&term=1R&grad_cd=0136&col_cd=9999&dept_cd=5597&cour_cd=KECE203&cour_cls=01&cour_nm=&std_id=&device=WW",
+      "location": "대충 장소",
+      "proffessor": "교수님",
+      "title": "강의"
+    }
+  ]
+}
+
