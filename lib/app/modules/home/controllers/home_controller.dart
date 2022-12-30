@@ -54,9 +54,12 @@ class HomeController extends GetxController {
         color: Colors.white,
         child: ListView.separated(
           itemBuilder: (BuildContext context, int index) {
-            return MaterialButton(onPressed: (){
-              Get.back(result: availableDepartment.keys.toList()[index]);
-            },child: Text(collegeToMap[availableDepartment.keys.toList()[index]]),);
+            return Container(
+              height: 40,
+              child: MaterialButton(onPressed: (){
+                Get.back(result: availableDepartment.keys.toList()[index]);
+              },child: Text(collegeToMap[availableDepartment.keys.toList()[index]]),),
+            );
           },
           separatorBuilder: (BuildContext context, int index) {
             return Divider();
@@ -76,9 +79,12 @@ class HomeController extends GetxController {
         color: Colors.white,
         child: ListView.separated(
           itemBuilder: (BuildContext context, int index) {
-            return MaterialButton(onPressed: (){
-              Get.back(result: availableDepartment[selectedCollege]![index]);
-            },child: Text(availableDepartment[selectedCollege]![index].display!),);
+            return Container(
+              height: 40,
+              child: MaterialButton(onPressed: (){
+                Get.back(result: availableDepartment[selectedCollege]![index]);
+              },child: Text(availableDepartment[selectedCollege]![index].display!),),
+            );
           },
           separatorBuilder: (BuildContext context, int index) {
             return Divider();

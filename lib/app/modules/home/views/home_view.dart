@@ -37,7 +37,7 @@ class HomeView extends GetView<HomeController> {
                           ]),
                       child: MaterialButton(
                         child: Text(
-                          controller.collegeToMap[controller.selectedCollege],
+                          controller.collegeToMap[controller.selectedCollege]??'1. 선택하세요',
                           style: GoogleFonts.lato(
                             textStyle: Theme.of(context).textTheme.headline4,
                             fontSize: 16,
@@ -67,7 +67,7 @@ class HomeView extends GetView<HomeController> {
                           ]),
                       child: MaterialButton(
                         child: Text(
-                          controller.selectedDepartment.display ?? "선택하세요",
+                          controller.selectedDepartment.display ?? "2. 선택하세요",
                           style: GoogleFonts.lato(
                             textStyle: Theme.of(context).textTheme.headline4,
                             fontSize: 16,
