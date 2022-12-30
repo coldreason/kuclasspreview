@@ -12,62 +12,91 @@ class HomeView extends GetView<HomeController> {
         children: [
           Container(
             height: 60,
-            child: GetBuilder<HomeController>(
-              builder: (_) {
-                if(controller.availableDepartment.keys.toList().isEmpty)return Container();
-                return Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Container(
+            child: GetBuilder<HomeController>(builder: (_) {
+              if (controller.availableDepartment.keys.toList().isEmpty)
+                return Container();
+              return Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Container(
                       width: 160,
                       decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: [Colors.teal,Colors.teal[200]!,],
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight
-                        ),
-                        borderRadius: BorderRadius.circular(20),
-                        boxShadow: [BoxShadow(color: Colors.black12,offset: Offset(5,5),blurRadius: 10)]
-                      ),
+                          gradient: LinearGradient(
+                              colors: [
+                                Colors.teal,
+                                Colors.teal[200]!,
+                              ],
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight),
+                          borderRadius: BorderRadius.circular(20),
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.black12,
+                                offset: Offset(5, 5),
+                                blurRadius: 10)
+                          ]),
                       child: MaterialButton(
-                        child: Text(controller.collegeToMap[controller.selectedCollege],style: GoogleFonts.lato(
-                          textStyle: Theme.of(context).textTheme.headline4,
-                          fontSize: 16,
-                          color: Colors.white,
-                          fontWeight: FontWeight.w500,
-                          fontStyle: FontStyle.normal,
-                        ),),
-                        onPressed: controller.changeCollegeSelected,
-                      )
-                    ),Container(
-                        width: 160,
-                        decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                                colors: [Colors.teal,Colors.teal[200]!,],
-                                begin: Alignment.topLeft,
-                                end: Alignment.bottomRight
-                            ),
-                            borderRadius: BorderRadius.circular(20),
-                            boxShadow: [BoxShadow(color: Colors.black12,offset: Offset(5,5),blurRadius: 10)]
-                        ),
-                        child: MaterialButton(
-                          child: Text(controller.selectedDepartment.display??"선택하세요",style: GoogleFonts.lato(
+                        child: Text(
+                          controller.collegeToMap[controller.selectedCollege],
+                          style: GoogleFonts.lato(
                             textStyle: Theme.of(context).textTheme.headline4,
                             fontSize: 16,
                             color: Colors.white,
                             fontWeight: FontWeight.w500,
                             fontStyle: FontStyle.normal,
-                          ),),
-                          onPressed: controller.changeDepartmentSelected,
-                        )
-                    ),
-                  ],
-                );
-              }
-            ),
+                          ),
+                        ),
+                        onPressed: controller.changeCollegeSelected,
+                      )),
+                  Container(
+                      width: 160,
+                      decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                              colors: [
+                                Colors.teal,
+                                Colors.teal[200]!,
+                              ],
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight),
+                          borderRadius: BorderRadius.circular(20),
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.black12,
+                                offset: Offset(5, 5),
+                                blurRadius: 10)
+                          ]),
+                      child: MaterialButton(
+                        child: Text(
+                          controller.selectedDepartment.display ?? "선택하세요",
+                          style: GoogleFonts.lato(
+                            textStyle: Theme.of(context).textTheme.headline4,
+                            fontSize: 16,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w500,
+                            fontStyle: FontStyle.normal,
+                          ),
+                        ),
+                        onPressed: controller.changeDepartmentSelected,
+                      )),
+                ],
+              );
+            }),
           ),
           Expanded(child: GetBuilder<HomeController>(builder: (_) {
-            if (controller.courseList.length == 0) return Container();
+            if (controller.courseList.isEmpty)
+              return Container(
+                child: Center(
+                  child: Text(
+                      '본 자료는 순수하게\n 크롤링을 이용하여 만들어졌음을 밝힙니다.\n비영리성 토이 프로젝트이며\n 위법적인 일을 수행하지는 않았으나,\n학교측의 공식 자료는 아님을 말씀드립니다',
+                    style: GoogleFonts.lato(
+                      textStyle: Theme.of(context).textTheme.headline4,
+                      fontSize: 14,
+                      color: Colors.black,
+                      fontWeight: FontWeight.w500,
+                      fontStyle: FontStyle.normal,
+                    ),
+                ),
+              ));
             return Padding(
               padding: const EdgeInsets.all(8.0),
               child: ListView.builder(
