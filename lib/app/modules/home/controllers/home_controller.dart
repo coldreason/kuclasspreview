@@ -13,10 +13,12 @@ class HomeController extends GetxController {
   HomeController({required this.repository});
 
   List<Course> courseList = [];
+  List<Course> courseListView = [];
   Map<String, dynamic> collegeToMap = {};
   Map<String, List<Department>> availableDepartment = {};
   String selectedCollege = "engineering";
   Department selectedDepartment = Department();
+  List<bool> filter = [true,true,true,true];
 
   @override
   void onInit() async {
@@ -45,6 +47,21 @@ class HomeController extends GetxController {
         ),
       ),
     );
+  }
+
+  void filterSelected(bool selected,int startWith){
+    filter[startWith-1] = selected;
+    updateViewList();
+  }
+
+  void updateViewList(){
+    courseListView = [];
+    for(Course course in courseList){
+      if (filter[int.parse(course.courseId![0])-1]==true){
+        courseListView.add(course);
+      }
+    }
+    update();
   }
 
   void changeCollegeSelected() async{
@@ -94,7 +111,7 @@ class HomeController extends GetxController {
       ),
     );
     courseList = await repository.getCoursesWithDepartment(selectedDepartment.key!);
-    update();
+    updateViewList();
   }
 }
 
