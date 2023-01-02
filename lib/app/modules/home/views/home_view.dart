@@ -98,20 +98,56 @@ class HomeView extends GetView<HomeController> {
             ),
           ),
           Expanded(child: GetBuilder<HomeController>(builder: (_) {
-            if (controller.courseListView.isEmpty)
+            if (controller.courseListView.isEmpty) {
               return Container(
                   child: Center(
-                child: Text(
-                  '본 자료는 순수하게\n 크롤링을 이용하여 만들어졌음을 밝힙니다.\n비영리성 토이 프로젝트이며\n 위법적인 일을 수행하지는 않았으나,\n학교측의 공식 자료는 아님을 말씀드립니다\n\n대학원,평생교육사,군사학,교직,1학년세미나 추가하지 못했습니다\n학문의 기초 :각 전공에 포함되어있습니다.\n교양 -> 핵심교양, 아잉 : 따로 항목을 분리하였습니다\n선택교양 : 학수번호가 각 전공과 같은 경우 해당 전공에 포함되었습니다.(아닌경우 누락)\n데이터 최종 업데이트 : 23.01.03:00:19 자정마다 업데이트가 이루어질 예정입니다.',
-                  style: GoogleFonts.lato(
-                    textStyle: Theme.of(context).textTheme.headline4,
-                    fontSize: 13,
-                    color: Colors.black,
-                    fontWeight: FontWeight.w500,
-                    fontStyle: FontStyle.normal,
-                  ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    SizedBox(),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        (controller.intro.intro??"").replaceAll('\\n', '\n'),
+                        style: GoogleFonts.lato(
+                          textStyle: Theme.of(context).textTheme.headline4,
+                          fontSize: 13,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w500,
+                          fontStyle: FontStyle.normal,
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        (controller.intro.notice??"").replaceAll('\\n', '\n'),
+                        style: GoogleFonts.lato(
+                          textStyle: Theme.of(context).textTheme.headline4,
+                          fontSize: 13,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w500,
+                          fontStyle: FontStyle.normal,
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        "data last updated at ${controller.intro.updateAt}",
+                        style: GoogleFonts.lato(
+                          textStyle: Theme.of(context).textTheme.headline4,
+                          fontSize: 13,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w500,
+                          fontStyle: FontStyle.normal,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ));
+            }
             return Padding(
               padding: const EdgeInsets.all(8.0),
               child: ListView.builder(

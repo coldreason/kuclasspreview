@@ -3,6 +3,11 @@ class FirebaseConstants {
   static const collegeToView = "collegeToView";
   static const available = "available";
 
+  static const intro = "intro";
+  static const notice = "notice";
+  static const updateAt = "updateAt";
+
+
   static const department = "department";
 
   static const classNo = "classNo";

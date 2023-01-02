@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kuclasspreview/app/data/models/course_model.dart';
 import 'package:kuclasspreview/app/data/models/department_model.dart';
+import 'package:kuclasspreview/app/data/models/intro_model.dart';
 import 'package:kuclasspreview/app/modules/home/repositories/home_repository.dart';
 
 class HomeController extends GetxController {
@@ -19,12 +20,14 @@ class HomeController extends GetxController {
   String selectedCollege = "engineering";
   Department selectedDepartment = Department();
   List<bool> filter = [true,true,true,true];
+  Intro intro = Intro();
 
   @override
   void onInit() async {
     super.onInit();
     collegeToMap = await repository.getCollegeToViewMap();
     availableDepartment = await repository.getAvailableDepartmentMap();
+    intro = await repository.getIntro();
     update();
   }
 
