@@ -19,7 +19,7 @@ class HomeController extends GetxController {
   Map<String, List<Department>> availableDepartment = {};
   String selectedCollege = "engineering";
   Department selectedDepartment = Department();
-  List<bool> filter = [true,true,true,true];
+  List<bool> filter = [true,true,true,true,true];
   Intro intro = Intro();
 
   @override
@@ -53,14 +53,14 @@ class HomeController extends GetxController {
   }
 
   void filterSelected(bool selected,int startWith){
-    filter[startWith-1] = selected;
+    filter[startWith] = selected;
     updateViewList();
   }
 
   void updateViewList(){
     courseListView = [];
     for(Course course in courseList){
-      if (filter[int.parse(course.courseId![0])-1]==true){
+      if (filter[int.parse(course.courseId![0])]==true){
         courseListView.add(course);
       }
     }

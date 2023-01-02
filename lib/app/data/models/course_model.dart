@@ -19,7 +19,7 @@ class Course {
   Course.fromJson(Map<String, dynamic> json) {
     classNo = json['classNo'];
     code = json['code'];
-    courseId = json['courseId'];
+    courseId = json['courseId'].toString().padLeft(3, '0');
     link = json['link'];
     location = json['location'];
     professor = json['professor'];

@@ -90,10 +90,11 @@ class HomeView extends GetView<HomeController> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                FilterButton(func: controller.filterSelected, isChecked: controller.filter[0], startWith: "1"),
-                FilterButton(func: controller.filterSelected, isChecked: controller.filter[1], startWith: "2"),
-                FilterButton(func: controller.filterSelected, isChecked: controller.filter[2], startWith: "3"),
-                FilterButton(func: controller.filterSelected, isChecked: controller.filter[3], startWith: "4")
+                FilterButton(func: controller.filterSelected, isChecked: controller.filter[0], startWith: "0"),
+                FilterButton(func: controller.filterSelected, isChecked: controller.filter[1], startWith: "1"),
+                FilterButton(func: controller.filterSelected, isChecked: controller.filter[2], startWith: "2"),
+                FilterButton(func: controller.filterSelected, isChecked: controller.filter[3], startWith: "3"),
+                FilterButton(func: controller.filterSelected, isChecked: controller.filter[4], startWith: "4")
               ],
             ),
           ),
@@ -200,7 +201,7 @@ class FilterButton extends StatelessWidget {
         ),
         RoundCheckBox(
           isChecked: isChecked,
-          checkedColor: courseColor[int.parse(startWith)-1],
+          checkedColor: courseColor[int.parse(startWith)],
           size: 30,
           onTap: (selected) {
             func(selected,int.parse(startWith));
@@ -211,7 +212,7 @@ class FilterButton extends StatelessWidget {
   }
 }
 
-List<Color> courseColor = [Colors.greenAccent,Colors.yellow,Colors.orange,Colors.purpleAccent];
+List<Color> courseColor = [Colors.cyanAccent,Colors.greenAccent,Colors.yellow,Colors.orange,Colors.purpleAccent];
 
 class CourseCard extends StatelessWidget {
   const CourseCard(
@@ -239,7 +240,7 @@ class CourseCard extends StatelessWidget {
           Center(
             child: Container(
               decoration: BoxDecoration(
-                  color: courseColor[int.parse(courseInfo.substring(5, 6))-1],
+                  color: courseColor[int.parse(courseInfo.substring(5, 6))],
                   borderRadius: BorderRadius.circular(20)),
               width: 35,
               height: 35,
